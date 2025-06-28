@@ -14,6 +14,10 @@
   --foreground: #171717;
   --font-heading: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   --font-subtitle: GT-America-Standard-Light, Helvetica, Arial, sans-serif;
+  --brand-primary: #083c34;
+  --brand-secondary: #a88c6c;
+  --brand-primary-dark: #062d26;
+  --brand-secondary-dark: #8f7558;
 }
 
 @theme inline {
@@ -45,6 +49,39 @@ body {
 .font-subtitle {
   font-family: var(--font-subtitle);
   font-weight: 400;
-  color: rgb(7, 57, 55);
+  color: var(--brand-secondary);
   line-height: 1.56;
+}
+
+/* Brand Color Utilities */
+.text-brand-primary {
+  color: var(--brand-primary);
+}
+
+.text-brand-secondary {
+  color: var(--brand-secondary);
+}
+
+.bg-brand-primary {
+  background-color: var(--brand-primary);
+}
+
+.bg-brand-secondary {
+  background-color: var(--brand-secondary);
+}
+
+.border-brand-primary {
+  border-color: var(--brand-primary);
+}
+
+.border-brand-secondary {
+  border-color: var(--brand-secondary);
+}
+
+.hover\:bg-brand-primary-dark:hover {
+  background-color: var(--brand-primary-dark);
+}
+
+.hover\:bg-brand-secondary-dark:hover {
+  background-color: var(--brand-secondary-dark);
 }

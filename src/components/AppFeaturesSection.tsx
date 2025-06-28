@@ -4,7 +4,7 @@ export default function AppFeaturesSection() {
   const features = [
     {
       icon: (
-        <svg className="w-8 h-8 text-[#0d4747]" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-8 h-8 text-brand-primary" fill="currentColor" viewBox="0 0 24 24">
           <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
         </svg>
       ),
@@ -13,7 +13,7 @@ export default function AppFeaturesSection() {
     },
     {
       icon: (
-        <svg className="w-8 h-8 text-[#0d4747]" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-8 h-8 text-brand-primary" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
         </svg>
       ),
@@ -22,7 +22,7 @@ export default function AppFeaturesSection() {
     },
     {
       icon: (
-        <svg className="w-8 h-8 text-[#0d4747]" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-8 h-8 text-brand-primary" fill="currentColor" viewBox="0 0 24 24">
           <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-6h11v6zm0-7H4V9h11v2zm5 7h-4V9h4v9z"/>
         </svg>
       ),
@@ -31,7 +31,7 @@ export default function AppFeaturesSection() {
     },
     {
       icon: (
-        <svg className="w-8 h-8 text-[#0d4747]" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-8 h-8 text-brand-primary" fill="currentColor" viewBox="0 0 24 24">
           <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
           <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
         </svg>
@@ -90,7 +90,7 @@ export default function AppFeaturesSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="order-2 lg:order-1">
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-normal text-[#0d4747] mb-4 sm:mb-6 leading-tight">
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-normal text-brand-primary mb-4 sm:mb-6 leading-tight">
               Everything you need<br />
               is just a tap away
             </h2>
@@ -106,7 +106,7 @@ export default function AppFeaturesSection() {
                     {feature.icon}
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-[#0d4747] mb-1">
+                    <h3 className="text-lg font-medium text-brand-primary mb-1">
                       {feature.title}
                     </h3>
                     {feature.description && (

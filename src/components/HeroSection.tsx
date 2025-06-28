@@ -5,9 +5,9 @@ export default function HeroSection() {
 
   // Background images array
   const backgroundImages = [
+    "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/assets/madinah1.jpg')",
     "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/hero1.webp')",
-    "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/hero2.webp')",
-    "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/hero3.webp')",
+    "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/assets/madinah2.jpg')",
   ];
 
   // Auto-change images every 3 seconds
@@ -52,24 +52,24 @@ export default function HeroSection() {
         </div>
 
         {/* Location Info */}
-        <div className="mb-8 sm:mb-12">
-          <div className="flex items-center space-x-2 text-[#0d4747] bg-white/90 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 w-fit text-sm sm:text-base">
-            <svg
-              width="14"
-              height="14"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              className="sm:w-4 sm:h-4 flex-shrink-0"
-            >
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-            </svg>
-            <span className="font-medium">Foothills One Platt</span>
-            <span className="text-gray-600 hidden sm:inline">|</span>
-            <span className="text-gray-700 hidden sm:inline">
-              New York City
-            </span>
+                  <div className="mb-8 sm:mb-12">
+            <div className="flex items-center space-x-2 text-brand-primary bg-white/90 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 w-fit text-sm sm:text-base">
+              <svg
+                width="14"
+                height="14"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                className="sm:w-4 sm:h-4 flex-shrink-0"
+              >
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+              <span className="font-medium">Foothills Madinah</span>
+              <span className="text-brand-secondary hidden sm:inline">|</span>
+              <span className="text-brand-secondary hidden sm:inline">
+                Al-Madinah Al-Munawwarah
+              </span>
+            </div>
           </div>
-        </div>
       </div>
     </div>
   );

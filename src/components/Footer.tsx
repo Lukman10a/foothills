@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0d4747] text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-16">
+    <footer className="bg-brand-primary text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-16">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-8 sm:mb-12">
@@ -12,11 +12,11 @@ export default function Footer() {
               {/* Foothills Logo */}
               <div className="flex items-center mb-2">
                 <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center mr-3">
-                  <span className="text-[#0d4747] font-bold text-lg">F</span>
+                  <span className="text-brand-primary font-bold text-lg">F</span>
                 </div>
                 <span className="text-2xl font-light">Foothills</span>
               </div>
-              <p className="text-sm opacity-80">BY MARRIOTT BONVOY</p>
+              <p className="text-sm opacity-80">MADINAH • BY MARRIOTT BONVOY</p>
             </div>
 
             {/* Company Links */}

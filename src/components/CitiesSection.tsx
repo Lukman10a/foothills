@@ -35,7 +35,7 @@ export default function CitiesSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header Text */}
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-normal text-[#0d4747] mb-4 sm:mb-6 leading-tight">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-normal text-brand-primary mb-4 sm:mb-6 leading-tight">
             A world of choice
           </h2>
           <p className="font-subtitle text-base sm:text-lg lg:text-xl max-w-2xl sm:max-w-3xl mx-auto leading-relaxed px-4">
@@ -138,7 +138,7 @@ export default function CitiesSection() {
 
         {/* View All Cities Button */}
         <div className="text-center mt-12">
-          <button className="inline-flex items-center space-x-2 bg-[#0d4747] text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-[#0a3a3a] transition-colors duration-200 shadow-lg">
+          <button className="inline-flex items-center space-x-2 bg-brand-primary text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-brand-primary-dark transition-colors duration-200 shadow-lg">
             <span>View all cities</span>
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
