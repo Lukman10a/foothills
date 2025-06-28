@@ -2,10 +2,10 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0d4747] text-white py-16 px-6 lg:px-16">
+    <footer className="bg-[#0d4747] text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-16">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-8 sm:mb-12">
           {/* Logo and Company Section */}
           <div className="lg:col-span-1">
             <div className="mb-8">
@@ -46,8 +46,8 @@ export default function Footer() {
           </div>
 
           {/* Social and Language/Currency Section */}
-          <div className="lg:col-span-2">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="sm:col-span-2 lg:col-span-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
               {/* Social Media */}
               <div>
                 <h3 className="text-sm font-semibold mb-4 opacity-80">SOCIAL</h3>

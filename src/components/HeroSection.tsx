@@ -37,29 +37,30 @@ export default function HeroSection() {
       ))}
 
       {/* Content Overlay */}
-      <div className="relative z-10 h-full flex flex-col justify-center items-center p-8 lg:p-16">
+      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-8 lg:px-16 py-8">
         {/* Main Title */}
-        <div className="text-center mb-16">
-          <h1 className="text-6xl lg:text-8xl font-light text-[#0d4747] leading-tight mb-6">
+        <div className=" mb-8 sm:mb-12 lg:mb-16 max-w-4xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-white leading-tight mb-4 sm:mb-6">
             A better way<br />
             to stay
           </h1>
-          <p className="text-lg lg:text-xl text-[#0d4747] max-w-lg leading-relaxed opacity-90 mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-white max-w-md sm:max-w-lg lg:max-w-xl leading-relaxed opacity-90 mx-auto">
             A choice of stays in the cities you love, powered by an app that puts you in control. Now part of Marriott Bonvoy.
           </p>
         </div>
 
         {/* Location Info */}
-        <div className="mb-8">
-          <div className="flex items-center space-x-2 text-[#0d4747] bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 w-fit">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+        <div className="mb-8 sm:mb-12">
+          <div className="flex items-center space-x-2 text-[#0d4747] bg-white/90 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 w-fit text-sm sm:text-base">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" className="sm:w-4 sm:h-4 flex-shrink-0">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
             </svg>
             <span className="font-medium">Foothills One Platt</span>
-            <span className="text-gray-600">|</span>
-            <span className="text-gray-700">New York City</span>
+            <span className="text-gray-600 hidden sm:inline">|</span>
+            <span className="text-gray-700 hidden sm:inline">New York City</span>
           </div>
-        </div>      
+        </div>
+   
       </div>
     </div>
   );

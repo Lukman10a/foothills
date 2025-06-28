@@ -2,30 +2,30 @@ import React from "react";
 
 export default function MarriottBonvoySection() {
   return (
-    <section className="py-8 px-6 lg:px-16 bg-white">
+    <section className="py-6 sm:py-8 px-4 sm:px-6 lg:px-16 bg-white">
       <div className="max-w-7xl mx-auto">
-        <div className="bg-[#e8e4dc] rounded-3xl px-8 py-6 lg:px-12 lg:py-8 flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div className="bg-[#e8e4dc] rounded-2xl sm:rounded-3xl px-6 py-6 sm:px-8 sm:py-6 lg:px-12 lg:py-8 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
           {/* Left Content */}
-          <div className="flex items-center space-x-8">
+          <div className="flex flex-col sm:flex-row items-center sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 lg:space-x-8 text-center sm:text-left">
             {/* Marriott Bonvoy Logo */}
             <div className="flex-shrink-0">
               <div className="text-[#2c2c2c]">
-                <div className="text-sm font-bold tracking-[0.2em] leading-tight">MARRIOTT</div>
-                <div className="text-xl font-bold tracking-[0.3em] leading-tight">BONVOY</div>
+                <div className="text-xs sm:text-sm font-bold tracking-[0.2em] leading-tight">MARRIOTT</div>
+                <div className="text-lg sm:text-xl font-bold tracking-[0.3em] leading-tight">BONVOY</div>
               </div>
             </div>
             
             {/* Text Content */}
             <div className="text-[#2c2c2c]">
-              <p className="text-lg lg:text-xl font-normal leading-relaxed">
+              <p className="text-base sm:text-lg lg:text-xl font-normal leading-relaxed">
                 Join Marriott Bonvoy<sup className="text-xs">®</sup> and earn points toward free nights for your stays.
               </p>
             </div>
           </div>
 
           {/* Right CTA Button */}
-          <div className="flex-shrink-0">
-            <button className="bg-transparent text-[#2c2c2c] px-8 py-3 rounded-full text-lg font-medium border-2 border-[#2c2c2c] hover:bg-[#2c2c2c] hover:text-white transition-colors duration-200">
+          <div className="flex-shrink-0 w-full sm:w-auto">
+            <button className="w-full sm:w-auto bg-transparent text-[#2c2c2c] px-6 sm:px-8 py-3 rounded-full text-base sm:text-lg font-medium border-2 border-[#2c2c2c] hover:bg-[#2c2c2c] hover:text-white transition-colors duration-200">
               Join Today!
             </button>
           </div>

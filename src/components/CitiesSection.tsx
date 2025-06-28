@@ -31,23 +31,23 @@ export default function CitiesSection() {
   ];
 
   return (
-    <section className="py-16 lg:py-24 px-6 lg:px-16 bg-[#fdfaf2]">
+    <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-16 bg-[#fdfaf2]">
       <div className="max-w-7xl mx-auto">
         {/* Header Text */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-light text-[#0d4747] mb-6 leading-tight">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#0d4747] mb-4 sm:mb-6 leading-tight">
             A world of choice
           </h2>
-          <p className="text-lg lg:text-xl text-[#0d4747] max-w-3xl mx-auto leading-relaxed opacity-90">
+          <p className="text-base sm:text-lg lg:text-xl text-[#0d4747] max-w-2xl sm:max-w-3xl mx-auto leading-relaxed opacity-90 px-4">
             Space just for you, or your entire crew. Choose from apartments and boutique hotels in over 40 cities around the world.
           </p>
         </div>
 
         {/* Cities Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Top Row - London */}
           <div className="group cursor-pointer">
-            <div className="relative overflow-hidden rounded-2xl h-64">
+            <div className="relative overflow-hidden rounded-xl sm:rounded-2xl h-48 sm:h-56 lg:h-64">
               <Image
                 src={cities[0].image}
                 alt={cities[0].alt}
@@ -55,8 +55,8 @@ export default function CitiesSection() {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4">
-                <h3 className="text-2xl font-light text-white">
+              <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
+                <h3 className="text-xl sm:text-2xl font-light text-white">
                   {cities[0].name}
                 </h3>
               </div>
@@ -65,7 +65,7 @@ export default function CitiesSection() {
 
           {/* Top Row - Los Angeles */}
           <div className="group cursor-pointer">
-            <div className="relative overflow-hidden rounded-2xl h-64">
+            <div className="relative overflow-hidden rounded-xl sm:rounded-2xl h-48 sm:h-56 lg:h-64">
               <Image
                 src={cities[1].image}
                 alt={cities[1].alt}
@@ -73,8 +73,8 @@ export default function CitiesSection() {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4">
-                <h3 className="text-2xl font-light text-white">
+              <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
+                <h3 className="text-xl sm:text-2xl font-light text-white">
                   {cities[1].name}
                 </h3>
               </div>
@@ -83,7 +83,7 @@ export default function CitiesSection() {
 
           {/* Middle Row - Dubai */}
           <div className="group cursor-pointer">
-            <div className="relative overflow-hidden rounded-2xl h-64">
+            <div className="relative overflow-hidden rounded-xl sm:rounded-2xl h-48 sm:h-56 lg:h-64">
               <Image
                 src={cities[2].image}
                 alt={cities[2].alt}
@@ -91,8 +91,8 @@ export default function CitiesSection() {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4">
-                <h3 className="text-2xl font-light text-white">
+              <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
+                <h3 className="text-xl sm:text-2xl font-light text-white">
                   {cities[2].name}
                 </h3>
               </div>
@@ -100,8 +100,8 @@ export default function CitiesSection() {
           </div>
 
           {/* Featured NYC - spans 2 columns */}
-          <div className="md:col-span-2 lg:col-span-2">
-            <div className="relative group cursor-pointer overflow-hidden rounded-2xl h-96">
+          <div className="sm:col-span-2 lg:col-span-2">
+            <div className="relative group cursor-pointer overflow-hidden rounded-xl sm:rounded-2xl h-64 sm:h-80 lg:h-96">
               <Image
                 src={cities[3].image}
                 alt={cities[3].alt}
@@ -109,8 +109,8 @@ export default function CitiesSection() {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-              <div className="absolute bottom-6 left-6">
-                <h3 className="text-3xl lg:text-4xl font-light text-white">
+              <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white">
                   {cities[3].name}
                 </h3>
               </div>
@@ -119,7 +119,7 @@ export default function CitiesSection() {
 
           {/* Bottom Row - Montreal */}
           <div className="group cursor-pointer">
-            <div className="relative overflow-hidden rounded-2xl h-64">
+            <div className="relative overflow-hidden rounded-xl sm:rounded-2xl h-48 sm:h-56 lg:h-64">
               <Image
                 src={cities[4].image}
                 alt={cities[4].alt}
@@ -127,8 +127,8 @@ export default function CitiesSection() {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4">
-                <h3 className="text-2xl font-light text-white">
+              <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
+                <h3 className="text-xl sm:text-2xl font-light text-white">
                   {cities[4].name}
                 </h3>
               </div>

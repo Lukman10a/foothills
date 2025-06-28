@@ -92,14 +92,14 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="py-16 lg:py-24 px-6 lg:px-16 bg-white">
+    <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-16 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-16">
-          <h2 className="text-4xl lg:text-5xl font-light text-[#0d4747] mb-6 leading-tight">
+        <div className="mb-12 sm:mb-16 text-center sm:text-left">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#0d4747] mb-4 sm:mb-6 leading-tight">
             Every stay has a story
           </h2>
-          <p className="text-lg lg:text-xl text-[#0d4747] opacity-90 leading-relaxed max-w-2xl">
+          <p className="text-base sm:text-lg lg:text-xl text-[#0d4747] opacity-90 leading-relaxed max-w-xl sm:max-w-2xl mx-auto sm:mx-0">
             But don&apos;t just take our word for it — see what our guests have to say.
           </p>
         </div>
@@ -109,20 +109,20 @@ export default function TestimonialsSection() {
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 hover:shadow-xl hover:scale-105 transition-all duration-300 -ml-6"
+            className="absolute left-2 sm:left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 hover:shadow-xl hover:scale-105 transition-all duration-300 sm:-ml-6"
             aria-label="Previous testimonial"
           >
-            <svg className="w-6 h-6 text-gray-600 hover:text-[#0d4747] transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 hover:text-[#0d4747] transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 hover:shadow-xl hover:scale-105 transition-all duration-300 -mr-6"
+            className="absolute right-2 sm:right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 hover:shadow-xl hover:scale-105 transition-all duration-300 sm:-mr-6"
             aria-label="Next testimonial"
           >
-            <svg className="w-6 h-6 text-gray-600 hover:text-[#0d4747] transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 hover:text-[#0d4747] transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -140,9 +140,9 @@ export default function TestimonialsSection() {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={testimonial.id}
-                  className={`w-[80%] flex-shrink-0 mx-[2%] ${testimonial.bgColor} ${testimonial.textColor} p-8 lg:p-12 min-h-[350px] flex flex-col justify-center transition-all duration-700 ease-out`}
+                  className={`w-[90%] sm:w-[85%] lg:w-[80%] flex-shrink-0 mx-[2%] ${testimonial.bgColor} ${testimonial.textColor} p-6 sm:p-8 lg:p-12 min-h-[280px] sm:min-h-[320px] lg:min-h-[350px] flex flex-col justify-center transition-all duration-700 ease-out`}
                   style={{
-                    borderRadius: '0 0 60px 0',
+                    borderRadius: '0 0 40px 0',
                     opacity: index === currentSlide ? 1 : 0.6,
                     transform: index === currentSlide ? 'scale(1)' : 'scale(0.92)',
                     filter: index === currentSlide ? 'brightness(1)' : 'brightness(0.8)'
@@ -150,12 +150,12 @@ export default function TestimonialsSection() {
                 >
                   <div className="max-w-3xl mx-auto text-left">
                     {/* Quote */}
-                    <blockquote className="text-xl lg:text-2xl font-light leading-relaxed mb-8">
+                    <blockquote className="text-lg sm:text-xl lg:text-2xl font-light leading-relaxed mb-6 sm:mb-8">
                       &ldquo;{testimonial.quote}&rdquo;
                     </blockquote>
                     
                     {/* Author */}
-                    <div className="text-base lg:text-lg">
+                    <div className="text-sm sm:text-base lg:text-lg">
                       <div className="font-semibold mb-1">{testimonial.author}</div>
                       <div className="opacity-80">{testimonial.location}</div>
                     </div>
