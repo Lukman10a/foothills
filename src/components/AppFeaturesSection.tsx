@@ -90,11 +90,11 @@ export default function AppFeaturesSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="order-2 lg:order-1">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#0d4747] mb-4 sm:mb-6 leading-tight">
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-normal text-[#0d4747] mb-4 sm:mb-6 leading-tight">
               Everything you need<br />
               is just a tap away
             </h2>
-            <p className="text-base sm:text-lg text-[#0d4747] mb-8 sm:mb-12 opacity-90 leading-relaxed">
+            <p className="font-subtitle text-base sm:text-lg mb-8 sm:mb-12 leading-relaxed">
               Customize your stay or connect with our digital concierge. The Foothills app puts you in control.
             </p>
 

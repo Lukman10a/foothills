@@ -37,10 +37,10 @@ export default function StoriesSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-12 sm:mb-16 text-center sm:text-left">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#0d4747] mb-4 sm:mb-6 leading-tight">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-normal text-[#0d4747] mb-4 sm:mb-6 leading-tight">
             Foothills stories
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-[#0d4747] opacity-90 leading-relaxed max-w-2xl sm:max-w-3xl mx-auto sm:mx-0">
+          <p className="font-subtitle text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl sm:max-w-3xl mx-auto sm:mx-0">
             From the latest news to travel inspiration, learn more about the world of Foothills.
           </p>
         </div>
@@ -65,11 +65,11 @@ export default function StoriesSection() {
 
               {/* Story Content */}
               <div className="space-y-3 sm:space-y-4">
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-light text-[#0d4747] leading-snug group-hover:text-[#1a5f5f] transition-colors duration-200">
+                <h3 className="font-heading text-lg sm:text-xl lg:text-2xl font-normal text-[#0d4747] leading-snug group-hover:text-[#1a5f5f] transition-colors duration-200">
                   {story.title}
                 </h3>
                 
-                <p className="text-sm sm:text-base text-[#0d4747] opacity-80 leading-relaxed">
+                <p className="font-subtitle text-sm sm:text-base leading-relaxed">
                   {story.excerpt}
                 </p>
 

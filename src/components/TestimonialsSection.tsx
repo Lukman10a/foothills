@@ -96,10 +96,10 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-12 sm:mb-16 text-center sm:text-left">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#0d4747] mb-4 sm:mb-6 leading-tight">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-normal text-[#0d4747] mb-4 sm:mb-6 leading-tight">
             Every stay has a story
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-[#0d4747] opacity-90 leading-relaxed max-w-xl sm:max-w-2xl mx-auto sm:mx-0">
+          <p className="font-subtitle text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl sm:max-w-2xl mx-auto sm:mx-0">
             But don&apos;t just take our word for it — see what our guests have to say.
           </p>
         </div>
@@ -150,7 +150,7 @@ export default function TestimonialsSection() {
                 >
                   <div className="max-w-3xl mx-auto text-left">
                     {/* Quote */}
-                    <blockquote className="text-lg sm:text-xl lg:text-2xl font-light leading-relaxed mb-6 sm:mb-8">
+                    <blockquote className="font-subtitle text-lg sm:text-xl lg:text-2xl font-normal leading-relaxed mb-6 sm:mb-8 text-inherit">
                       &ldquo;{testimonial.quote}&rdquo;
                     </blockquote>
                     

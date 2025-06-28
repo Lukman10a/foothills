@@ -35,10 +35,10 @@ export default function CitiesSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header Text */}
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#0d4747] mb-4 sm:mb-6 leading-tight">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-normal text-[#0d4747] mb-4 sm:mb-6 leading-tight">
             A world of choice
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-[#0d4747] max-w-2xl sm:max-w-3xl mx-auto leading-relaxed opacity-90 px-4">
+          <p className="font-subtitle text-base sm:text-lg lg:text-xl max-w-2xl sm:max-w-3xl mx-auto leading-relaxed px-4">
             Space just for you, or your entire crew. Choose from apartments and boutique hotels in over 40 cities around the world.
           </p>
         </div>
@@ -56,7 +56,7 @@ export default function CitiesSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
               <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
-                <h3 className="text-xl sm:text-2xl font-light text-white">
+                <h3 className="font-heading text-xl sm:text-2xl font-normal text-white">
                   {cities[0].name}
                 </h3>
               </div>
@@ -74,7 +74,7 @@ export default function CitiesSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
               <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
-                <h3 className="text-xl sm:text-2xl font-light text-white">
+                <h3 className="font-heading text-xl sm:text-2xl font-normal text-white">
                   {cities[1].name}
                 </h3>
               </div>
@@ -92,7 +92,7 @@ export default function CitiesSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
               <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
-                <h3 className="text-xl sm:text-2xl font-light text-white">
+                <h3 className="font-heading text-xl sm:text-2xl font-normal text-white">
                   {cities[2].name}
                 </h3>
               </div>
@@ -110,7 +110,7 @@ export default function CitiesSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
               <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6">
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white">
+                <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-normal text-white">
                   {cities[3].name}
                 </h3>
               </div>
@@ -128,7 +128,7 @@ export default function CitiesSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
               <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
-                <h3 className="text-xl sm:text-2xl font-light text-white">
+                <h3 className="font-heading text-xl sm:text-2xl font-normal text-white">
                   {cities[4].name}
                 </h3>
               </div>

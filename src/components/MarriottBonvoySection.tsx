@@ -10,14 +10,14 @@ export default function MarriottBonvoySection() {
             {/* Marriott Bonvoy Logo */}
             <div className="flex-shrink-0">
               <div className="text-[#2c2c2c]">
-                <div className="text-xs sm:text-sm font-bold tracking-[0.2em] leading-tight">MARRIOTT</div>
-                <div className="text-lg sm:text-xl font-bold tracking-[0.3em] leading-tight">BONVOY</div>
+                <div className="font-heading text-xs sm:text-sm font-bold tracking-[0.2em] leading-tight">MARRIOTT</div>
+                <div className="font-heading text-lg sm:text-xl font-bold tracking-[0.3em] leading-tight">BONVOY</div>
               </div>
             </div>
             
             {/* Text Content */}
             <div className="text-[#2c2c2c]">
-              <p className="text-base sm:text-lg lg:text-xl font-normal leading-relaxed">
+              <p className="font-subtitle text-base sm:text-lg lg:text-xl font-normal leading-relaxed text-inherit">
                 Join Marriott Bonvoy<sup className="text-xs">®</sup> and earn points toward free nights for your stays.
               </p>
             </div>
