@@ -1,6 +1,7 @@
 // import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Navbar() {
   const router = useRouter();
@@ -17,6 +18,15 @@ export default function Navbar() {
     "London", "Austin", "Barcelona", "Boston", "Chicago", "Denver", 
     "Miami", "Paris", "Rome", "Toronto", "Vancouver"
   ];
+
+  // Validation states for navbar search
+  const [navbarErrors, setNavbarErrors] = useState({
+    city: "",
+    checkIn: "",
+    checkOut: "",
+    dateRange: ""
+  });
+  const [isNavbarSubmitting, setIsNavbarSubmitting] = useState(false);
 
   // Scroll detection to show/hide navbar search
   useEffect(() => {
@@ -41,16 +51,92 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [router.pathname]);
 
-  const handleNavbarSearch = () => {
-    console.log("Navbar Search:", { selectedCity, checkIn, checkOut, guests });
-    // Route to search page with parameters
-    const searchParams = new URLSearchParams({
-      city: selectedCity,
-      checkIn: checkIn,
-      checkOut: checkOut,
-      guests: guests.toString()
-    });
-    window.location.href = `/search?${searchParams.toString()}`;
+  // Navbar search validation
+  const validateNavbarSearch = () => {
+    const newErrors = {
+      city: "",
+      checkIn: "",
+      checkOut: "",
+      dateRange: ""
+    };
+
+    if (!selectedCity.trim()) {
+      newErrors.city = "Please select a city";
+    }
+
+    if (!checkIn) {
+      newErrors.checkIn = "Please select check-in date";
+    } else {
+      const checkInDate = new Date(checkIn);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      
+      if (checkInDate < today) {
+        newErrors.checkIn = "Check-in cannot be in the past";
+      }
+    }
+
+    if (!checkOut) {
+      newErrors.checkOut = "Please select check-out date";
+    }
+
+    if (checkIn && checkOut) {
+      const checkInDate = new Date(checkIn);
+      const checkOutDate = new Date(checkOut);
+      
+      if (checkOutDate <= checkInDate) {
+        newErrors.dateRange = "Check-out must be after check-in";
+      }
+    }
+
+    setNavbarErrors(newErrors);
+    return Object.values(newErrors).every(error => error === "");
+  };
+
+  const handleNavbarSearch = async () => {
+    if (!validateNavbarSearch()) {
+      return;
+    }
+
+    setIsNavbarSubmitting(true);
+    
+    try {
+      console.log("Navbar Search:", { selectedCity, checkIn, checkOut, guests });
+      // Route to search page with parameters
+      const searchParams = new URLSearchParams({
+        city: selectedCity,
+        checkIn: checkIn,
+        checkOut: checkOut,
+        guests: guests.toString()
+      });
+      window.location.href = `/search?${searchParams.toString()}`;
+    } catch (error) {
+      console.error("Navbar search error:", error);
+    } finally {
+      setIsNavbarSubmitting(false);
+    }
+  };
+
+  // Clear navbar errors when user makes changes
+  const handleNavbarCityChange = (value: string) => {
+    setSelectedCity(value);
+    if (navbarErrors.city) {
+      setNavbarErrors(prev => ({ ...prev, city: "" }));
+    }
+  };
+
+  const handleNavbarCheckInChange = (value: string) => {
+    setCheckIn(value);
+    if (navbarErrors.checkIn || navbarErrors.dateRange) {
+      setNavbarErrors(prev => ({ ...prev, checkIn: "", dateRange: "" }));
+    }
+  };
+
+  const handleNavbarCheckOutChange = (value: string) => {
+    setCheckOut(value);
+    if (navbarErrors.checkOut || navbarErrors.dateRange) {
+      setNavbarErrors(prev => ({ ...prev, checkOut: "", dateRange: "" }));
+    }
   };
 
   return (
@@ -59,6 +145,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Left: Logo */}
+            <Link href="/">
             <div className="flex items-center space-x-2 sm:space-x-3">
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-brand-primary rounded-lg flex items-center justify-center flex-shrink-0">
                 <svg
@@ -101,6 +188,7 @@ export default function Navbar() {
                 </span>
               </div>
             </div>
+            </Link>
             {/* <Image src="public/assets/logo.png" alt="Foothills" width={100} height={100} className="w-10 h-10 bg-brand-primary"/> */}
             
             {/* Center: Sticky Search Form (appears on scroll) */}
@@ -110,7 +198,7 @@ export default function Navbar() {
                   <div className="flex-1 px-4 py-2">
                     <select
                       value={selectedCity}
-                      onChange={(e) => setSelectedCity(e.target.value)}
+                      onChange={(e) => handleNavbarCityChange(e.target.value)}
                       className="w-full bg-transparent text-sm outline-none appearance-none text-gray-700"
                     >
                       <option value="">Select a city</option>
@@ -125,7 +213,7 @@ export default function Navbar() {
                     <input
                       type="date"
                       value={checkIn}
-                      onChange={(e) => setCheckIn(e.target.value)}
+                      onChange={(e) => handleNavbarCheckInChange(e.target.value)}
                       className="w-20 bg-transparent text-sm outline-none text-gray-700"
                       placeholder="Check-in"
                     />
@@ -134,7 +222,7 @@ export default function Navbar() {
                     <input
                       type="date"
                       value={checkOut}
-                      onChange={(e) => setCheckOut(e.target.value)}
+                      onChange={(e) => handleNavbarCheckOutChange(e.target.value)}
                       className="w-20 bg-transparent text-sm outline-none text-gray-700"
                       placeholder="Check-out"
                     />
@@ -154,9 +242,14 @@ export default function Navbar() {
                   </div>
                   <button
                     onClick={handleNavbarSearch}
-                    className="bg-brand-primary text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-brand-primary-dark transition-colors duration-200 mr-1"
+                    disabled={isNavbarSubmitting}
+                    className={`px-6 py-2 rounded-full text-sm font-medium transition-colors duration-200 mr-1 ${
+                      isNavbarSubmitting
+                        ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
+                        : 'bg-brand-primary text-white hover:bg-brand-primary-dark'
+                    }`}
                   >
-                    Search
+                    {isNavbarSubmitting ? 'Searching...' : 'Search'}
                   </button>
                 </div>
               </div>
@@ -232,7 +325,7 @@ export default function Navbar() {
             <div className="flex items-center space-x-2">
               <select
                 value={selectedCity}
-                onChange={(e) => setSelectedCity(e.target.value)}
+                onChange={(e) => handleNavbarCityChange(e.target.value)}
                 className="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm outline-none"
               >
                 <option value="">City</option>
@@ -245,13 +338,13 @@ export default function Navbar() {
               <input
                 type="date"
                 value={checkIn}
-                onChange={(e) => setCheckIn(e.target.value)}
+                onChange={(e) => handleNavbarCheckInChange(e.target.value)}
                 className="px-3 py-2 border border-gray-200 rounded-lg text-sm outline-none"
               />
               <input
                 type="date"
                 value={checkOut}
-                onChange={(e) => setCheckOut(e.target.value)}
+                onChange={(e) => handleNavbarCheckOutChange(e.target.value)}
                 className="px-3 py-2 border border-gray-200 rounded-lg text-sm outline-none"
               />
               <select
@@ -267,9 +360,14 @@ export default function Navbar() {
               </select>
               <button
                 onClick={handleNavbarSearch}
-                className="bg-brand-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-brand-primary-dark transition-colors duration-200"
+                disabled={isNavbarSubmitting}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                  isNavbarSubmitting
+                    ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
+                    : 'bg-brand-primary text-white hover:bg-brand-primary-dark'
+                }`}
               >
-                Search
+                {isNavbarSubmitting ? 'Searching...' : 'Search'}
               </button>
             </div>
           </div>

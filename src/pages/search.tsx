@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -400,9 +401,11 @@ export default function SearchResults() {
                                   <div className="text-2xl font-bold text-gray-900 mb-1">
                                     ${property.price}
                                   </div>
-                                  <button className="bg-gray-900 text-white px-6 py-2 rounded-full font-medium hover:bg-gray-800 transition-colors">
-                                    View Rates
-                                  </button>
+                                  <Link href={`/property/${property.id}`}>
+                                    <button className="bg-gray-900 text-white px-6 py-2 rounded-full font-medium hover:bg-gray-800 transition-colors">
+                                      View Rates
+                                    </button>
+                                  </Link>
                                 </div>
                               </div>
                               <div className="flex items-center mb-3">
@@ -424,12 +427,12 @@ export default function SearchResults() {
                               <p className="text-gray-700 mb-4">
                                 {property.description}
                               </p>
-                              <button className="text-gray-900 font-medium hover:underline flex items-center">
+                              <Link href={`/property/${property.id}`} className="text-gray-900 font-medium hover:underline flex items-center">
                                 View Details
                                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
-                              </button>
+                              </Link>
                             </div>
                           </div>
                         </div>
@@ -504,99 +507,101 @@ export default function SearchResults() {
                     {properties.map((property) => {
                       const currentIndex = currentImageIndex[property.id] || 0;
                       return (
-                        <div key={property.id} className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow cursor-pointer">
-                          <div className="relative">
-                            <Image 
-                              src={property.images[currentIndex]} 
-                              alt={property.name} 
-                              width={300} 
-                              height={200} 
-                              className="w-full h-48 object-cover" 
-                            />
-                            {property.isNew && (
-                              <div className="absolute top-3 left-3 bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs font-medium">
-                                NEW
+                        <Link key={property.id} href={`/property/${property.id}`} className="block">
+                          <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow cursor-pointer">
+                            <div className="relative">
+                              <Image 
+                                src={property.images[currentIndex]} 
+                                alt={property.name} 
+                                width={300} 
+                                height={200} 
+                                className="w-full h-48 object-cover" 
+                              />
+                              {property.isNew && (
+                                <div className="absolute top-3 left-3 bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs font-medium">
+                                  NEW
+                                </div>
+                              )}
+                              <div className="absolute top-3 right-3 text-white">
+                                <div className="bg-black bg-opacity-60 px-2 py-1 rounded text-sm font-medium">
+                                  ${property.price}
+                                </div>
                               </div>
-                            )}
-                            <div className="absolute top-3 right-3 text-white">
-                              <div className="bg-black bg-opacity-60 px-2 py-1 rounded text-sm font-medium">
-                                ${property.price}
+                              
+                              {/* Navigation Arrows */}
+                              {property.images.length > 1 && (
+                                <>
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      prevImage(property.id, property.images.length);
+                                    }}
+                                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-1.5 transition-all duration-200"
+                                  >
+                                    <svg className="w-3 h-3 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                    </svg>
+                                  </button>
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      nextImage(property.id, property.images.length);
+                                    }}
+                                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-1.5 transition-all duration-200"
+                                  >
+                                    <svg className="w-3 h-3 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                    </svg>
+                                  </button>
+                                </>
+                              )}
+                              
+                              {/* Image Dots */}
+                              <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-1">
+                                {property.images.map((_, index) => (
+                                  <div
+                                    key={index}
+                                    className={`w-1.5 h-1.5 rounded-full ${
+                                      index === currentIndex ? 'bg-white' : 'bg-white bg-opacity-50'
+                                    }`}
+                                  />
+                                ))}
                               </div>
                             </div>
                             
-                            {/* Navigation Arrows */}
-                            {property.images.length > 1 && (
-                              <>
-                                <button
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    prevImage(property.id, property.images.length);
-                                  }}
-                                  className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-1.5 transition-all duration-200"
-                                >
-                                  <svg className="w-3 h-3 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                                  </svg>
-                                </button>
-                                <button
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    nextImage(property.id, property.images.length);
-                                  }}
-                                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-1.5 transition-all duration-200"
-                                >
-                                  <svg className="w-3 h-3 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                  </svg>
-                                </button>
-                              </>
-                            )}
-                            
-                            {/* Image Dots */}
-                            <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-1">
-                              {property.images.map((_, index) => (
-                                <div
-                                  key={index}
-                                  className={`w-1.5 h-1.5 rounded-full ${
-                                    index === currentIndex ? 'bg-white' : 'bg-white bg-opacity-50'
-                                  }`}
-                                />
-                              ))}
-                            </div>
-                          </div>
-                          
-                          <div className="p-4">
-                            <div className="flex items-start justify-between mb-2">
-                              <h3 className="font-semibold text-gray-900 text-sm leading-tight">
-                                {property.name}
-                              </h3>
-                            </div>
-                            <div className="flex items-center mb-2">
-                              <div className="flex items-center mr-3">
-                                <span className="text-yellow-400 mr-1 text-xs">★</span>
-                                <span className="font-medium text-gray-900 text-xs">{property.rating}</span>
-                                <span className="text-gray-600 text-xs ml-1">({property.reviewCount})</span>
+                            <div className="p-4">
+                              <div className="flex items-start justify-between mb-2">
+                                <h3 className="font-semibold text-gray-900 text-sm leading-tight">
+                                  {property.name}
+                                </h3>
                               </div>
-                              <div className="flex items-center text-gray-600">
-                                <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                                </svg>
-                                <span className="text-xs">{property.distance}</span>
+                              <div className="flex items-center mb-2">
+                                <div className="flex items-center mr-3">
+                                  <span className="text-yellow-400 mr-1 text-xs">★</span>
+                                  <span className="font-medium text-gray-900 text-xs">{property.rating}</span>
+                                  <span className="text-gray-600 text-xs ml-1">({property.reviewCount})</span>
+                                </div>
+                                <div className="flex items-center text-gray-600">
+                                  <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                                  </svg>
+                                  <span className="text-xs">{property.distance}</span>
+                                </div>
+                              </div>
+                              <p className="text-gray-600 text-xs leading-relaxed mb-3 line-clamp-2">
+                                {property.description}
+                              </p>
+                              <div className="flex items-center justify-between">
+                                <span className="px-2 py-1 bg-gray-100 rounded text-xs font-medium text-gray-700">
+                                  {property.category}
+                                </span>
+                                <span className="text-gray-900 text-xs font-medium hover:underline">
+                                  View Details
+                                </span>
                               </div>
                             </div>
-                            <p className="text-gray-600 text-xs leading-relaxed mb-3 line-clamp-2">
-                              {property.description}
-                            </p>
-                            <div className="flex items-center justify-between">
-                              <span className="px-2 py-1 bg-gray-100 rounded text-xs font-medium text-gray-700">
-                                {property.category}
-                              </span>
-                              <button className="text-gray-900 text-xs font-medium hover:underline">
-                                View Details
-                              </button>
-                            </div>
                           </div>
-                        </div>
+                        </Link>
                       );
                     })}
                   </div>
@@ -641,8 +646,9 @@ export default function SearchResults() {
                       const position = positions[index % positions.length];
                       
                       return (
-                        <div 
+                        <Link 
                           key={property.id}
+                          href={`/property/${property.id}`}
                           className="absolute transform -translate-x-1/2 -translate-y-1/2"
                           style={{ top: position.top, left: position.left }}
                         >
@@ -650,7 +656,7 @@ export default function SearchResults() {
                             <div className="text-sm font-bold text-gray-900">${property.price}</div>
                             <div className="text-xs text-gray-600">{property.category}</div>
                           </div>
-                        </div>
+                        </Link>
                       );
                     })}
                   </div>
