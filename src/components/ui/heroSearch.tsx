@@ -14,8 +14,15 @@ const HeroSearch = () => {
   ];
 
   const handleSearch = () => {
-    // TODO: Implement search functionality
     console.log("Search:", { selectedCity, checkIn, checkOut, guests });
+    // Route to search page with parameters
+    const searchParams = new URLSearchParams({
+      city: selectedCity,
+      checkIn: checkIn,
+      checkOut: checkOut,
+      guests: guests.toString()
+    });
+    window.location.href = `/search?${searchParams.toString()}`;
   };
 
   return (

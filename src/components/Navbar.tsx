@@ -31,6 +31,14 @@ export default function Navbar() {
 
   const handleNavbarSearch = () => {
     console.log("Navbar Search:", { selectedCity, checkIn, checkOut, guests });
+    // Route to search page with parameters
+    const searchParams = new URLSearchParams({
+      city: selectedCity,
+      checkIn: checkIn,
+      checkOut: checkOut,
+      guests: guests.toString()
+    });
+    window.location.href = `/search?${searchParams.toString()}`;
   };
 
   return (
