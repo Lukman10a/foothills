@@ -1,7 +1,9 @@
 // import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function Navbar() {
+  const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showNavbarSearch, setShowNavbarSearch] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
@@ -19,6 +21,12 @@ export default function Navbar() {
   // Scroll detection to show/hide navbar search
   useEffect(() => {
     const handleScroll = () => {
+      // Don't show navbar search on the search page
+      if (router.pathname === '/search') {
+        setShowNavbarSearch(false);
+        return;
+      }
+      
       // Show navbar search when scrolled past the hero section (approximately 800px)
       const scrollPosition = window.scrollY;
       const shouldShow = scrollPosition > 800;
@@ -26,8 +34,12 @@ export default function Navbar() {
     };
 
     window.addEventListener('scroll', handleScroll);
+    
+    // Also check on route change
+    handleScroll();
+    
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [router.pathname]);
 
   const handleNavbarSearch = () => {
     console.log("Navbar Search:", { selectedCity, checkIn, checkOut, guests });
