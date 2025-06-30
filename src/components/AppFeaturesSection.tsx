@@ -5,29 +5,30 @@ export default function AppFeaturesSection() {
     {
       icon: (
         <svg className="w-8 h-8 text-brand-primary" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-        </svg>
-      ),
-      title: "Check in online",
-      description: ""
-    },
-    {
-      icon: (
-        <svg className="w-8 h-8 text-brand-primary" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
         </svg>
       ),
-      title: "Access your mobile key",
-      description: ""
+      title: "Check in online",
+      description: "Skip the front desk and check in from anywhere"
     },
     {
       icon: (
         <svg className="w-8 h-8 text-brand-primary" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-6h11v6zm0-7H4V9h11v2zm5 7h-4V9h4v9z"/>
+          <path d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zM7 4V3h10v1H7zm0 14V6h10v12H7z"/>
+          <path d="M12 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+        </svg>
+      ),
+      title: "Access your mobile key",
+      description: "Your phone is your key - no plastic cards needed"
+    },
+    {
+      icon: (
+        <svg className="w-8 h-8 text-brand-primary" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4v6l4-6h8c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
         </svg>
       ),
       title: "Chat with us 24/7",
-      description: ""
+      description: "Get help anytime with our digital concierge"
     },
     {
       icon: (
@@ -37,7 +38,7 @@ export default function AppFeaturesSection() {
         </svg>
       ),
       title: "Choose your checkout time",
-      description: ""
+      description: "Flexible checkout that works with your schedule"
     }
   ];
 
@@ -165,8 +166,8 @@ export default function AppFeaturesSection() {
                     {/* App Content */}
                     <div className="px-6 py-4">
                       <div className="mb-4">
-                        <h3 className="text-xl font-semibold mb-1">Apollon | Room #103B</h3>
-                        <p className="text-gray-600 text-sm">Montreal</p>
+                        <h3 className="text-xl font-semibold mb-1">Foothills Madinah | Room #103B</h3>
+                        <p className="text-gray-600 text-sm">Al-Madinah Al-Munawwarah</p>
                         <p className="text-gray-600 text-sm">Nov 7-9 | 2 nights | 2 guests</p>
                       </div>
                       
@@ -181,7 +182,7 @@ export default function AppFeaturesSection() {
                         </div>
                         
                         <div className="space-y-3">
-                          <button className="w-full bg-black text-white py-3 rounded-lg text-sm font-medium">
+                          <button className="w-full bg-brand-primary text-white py-3 rounded-lg text-sm font-medium">
                             Check in
                           </button>
                           

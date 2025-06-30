@@ -14,7 +14,7 @@ export default function MarriottBonvoySection() {
                 <div className="font-heading text-lg sm:text-xl font-bold tracking-[0.3em] leading-tight">BONVOY</div>
               </div>
             </div>
-            
+
             {/* Text Content */}
             <div className="text-white">
               <p className="font-subtitle text-base sm:text-lg lg:text-xl font-normal leading-relaxed text-inherit">

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 export default function CitiesSection() {
+  const [showAllCities, setShowAllCities] = useState(false);
+
+  // Main featured cities (always visible)
   const cities = [
     {
       name: "London",
@@ -30,6 +33,40 @@ export default function CitiesSection() {
     }
   ];
 
+  // Additional cities (shown when expanded)
+  const additionalCities = [
+    {
+      name: "Riyadh",
+      image: "/assets/riyadh.jpeg",
+      alt: "Riyadh modern architecture"
+    },
+    {
+      name: "Kuwait",
+      image: "/assets/kuwait.jpeg",
+      alt: "Kuwait city skyline"
+    },
+    {
+      name: "Bahrain",
+      image: "/assets/bahrain.jpeg",
+      alt: "Bahrain waterfront"
+    },
+    {
+      name: "UAE",
+      image: "/assets/uae.jpeg",
+      alt: "UAE modern buildings"
+    },
+    {
+      name: "Qatar",
+      image: "/assets/qatar.jpeg",
+      alt: "Qatar luxury development"
+    },
+    {
+      name: "Sydney",
+      image: "/assets/sydney.jpeg",
+      alt: "Sydney harbor view"
+    }
+  ];
+
   return (
     <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-16 bg-[#fdfaf2]">
       <div className="max-w-7xl mx-auto">
@@ -43,7 +80,7 @@ export default function CitiesSection() {
           </p>
         </div>
 
-        {/* Cities Grid */}
+        {/* Main Cities Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Top Row - London */}
           <div className="group cursor-pointer">
@@ -136,16 +173,66 @@ export default function CitiesSection() {
           </div>
         </div>
 
+        {/* Additional Cities Grid (Expandable) */}
+        {showAllCities && (
+          <div className="mt-12 sm:mt-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 animate-fadeIn">
+              {additionalCities.map((city, index) => (
+                <div key={index} className="group cursor-pointer">
+                  <div className="relative overflow-hidden rounded-xl sm:rounded-2xl h-48 sm:h-56 lg:h-64">
+                    <Image
+                      src={city.image}
+                      alt={city.alt}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                    <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
+                      <h3 className="font-heading text-xl sm:text-2xl font-normal text-white">
+                        {city.name}
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* View All Cities Button */}
         <div className="text-center mt-12">
-          <button className="inline-flex items-center space-x-2 bg-brand-primary text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-brand-primary-dark transition-colors duration-200 shadow-lg">
-            <span>View all cities</span>
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <button 
+            onClick={() => setShowAllCities(!showAllCities)}
+            className="inline-flex items-center space-x-2 bg-brand-primary text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-brand-primary-dark transition-colors duration-200 shadow-lg"
+          >
+            <span>{showAllCities ? 'Show less cities' : 'View all cities'}</span>
+            <svg 
+              className={`w-5 h-5 transition-transform duration-200 ${showAllCities ? 'rotate-180' : ''}`}
+              fill="currentColor" 
+              viewBox="0 0 24 24"
+            >
               <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
             </svg>
           </button>
         </div>
       </div>
+
+      {/* CSS Animation */}
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { 
+            opacity: 0; 
+            transform: translateY(20px); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateY(0); 
+          }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.4s ease-out;
+        }
+      `}</style>
     </section>
   );
 } 

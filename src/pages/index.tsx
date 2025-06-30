@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
+import HeroSearch from "../components/ui/heroSearch";
 import CitiesSection from "../components/CitiesSection";
 import AppFeaturesSection from "../components/AppFeaturesSection";
 import MarriottBonvoySection from "../components/MarriottBonvoySection";
@@ -13,6 +14,7 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       <Navbar />
       <HeroSection />
+      <HeroSearch />
       <CitiesSection />
       <AppFeaturesSection />
       <MarriottBonvoySection />
