@@ -165,6 +165,7 @@ export default function PropertyDetail() {
     guests: 1
   });
   const [showBookingWidget, setShowBookingWidget] = useState(false);
+  const [isModalAnimating, setIsModalAnimating] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
 
   useEffect(() => {
@@ -193,6 +194,16 @@ export default function PropertyDetail() {
 
   const handleBookNow = () => {
     setShowBookingWidget(true);
+    setIsModalAnimating(true);
+    setTimeout(() => setIsModalAnimating(false), 200);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalAnimating(true);
+    setTimeout(() => {
+      setShowBookingWidget(false);
+      setIsModalAnimating(false);
+    }, 150);
   };
 
   const handleBookingSubmit = () => {
@@ -553,13 +564,19 @@ export default function PropertyDetail() {
 
         {/* Booking Widget Modal */}
         {showBookingWidget && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-            <div className="bg-white rounded-lg max-w-md w-full p-6">
+          <div 
+            className={`fixed inset-0 bg-black bg-opacity-30 z-50 flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-200 ${isModalAnimating ? 'opacity-0' : 'opacity-100'}`}
+            onClick={handleCloseModal}
+          >
+            <div 
+              className={`bg-white rounded-lg max-w-md w-full p-6 shadow-2xl transform transition-all duration-200 ${isModalAnimating ? 'scale-95 opacity-0' : 'scale-100 opacity-100'}`}
+              onClick={(e) => e.stopPropagation()}
+            >
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-xl font-bold text-gray-900">Book Your Stay</h3>
                 <button
-                  onClick={() => setShowBookingWidget(false)}
-                  className="text-gray-400 hover:text-gray-600"
+                  onClick={handleCloseModal}
+                  className="text-gray-400 hover:text-gray-600 transition-colors duration-200"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

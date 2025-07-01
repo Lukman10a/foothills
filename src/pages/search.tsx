@@ -116,6 +116,7 @@ export default function SearchResults() {
   const [sortBy, setSortBy] = useState('Distance');
   const [currentImageIndex, setCurrentImageIndex] = useState<{[key: string]: number}>({});
   const [showMapView, setShowMapView] = useState(false);
+  const [showMobilePropertyList, setShowMobilePropertyList] = useState(false);
 
   useEffect(() => {
     // Parse URL parameters when component mounts
@@ -479,8 +480,8 @@ export default function SearchResults() {
 
             {/* Map View Content */}
             <div className="flex-1 flex">
-              {/* Left Panel - Property List */}
-              <div className="w-96 bg-white border-r border-gray-200 flex flex-col">
+              {/* Left Panel - Property List - Hidden on Mobile */}
+              <div className="hidden lg:flex w-96 bg-white border-r border-gray-200 flex-col">
                 {/* Results Header */}
                 <div className="p-4 border-b border-gray-200">
                   <div className="flex items-center justify-between mb-2">
@@ -695,15 +696,101 @@ export default function SearchResults() {
 
         {/* Fixed List Button - Map View */}
         {showMapView && (
-          <button 
-            onClick={() => setShowMapView(false)}
-            className="fixed bottom-6 right-6 z-50 flex items-center bg-gray-900 text-white px-6 py-3 rounded-full font-medium shadow-lg hover:bg-gray-800 transition-all duration-200 hover:scale-105"
-          >
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
-            </svg>
-            List
-          </button>
+          <>
+            {/* Desktop List Button */}
+            <button 
+              onClick={() => setShowMapView(false)}
+              className="hidden lg:flex fixed bottom-6 right-6 z-50 items-center bg-gray-900 text-white px-6 py-3 rounded-full font-medium shadow-lg hover:bg-gray-800 transition-all duration-200 hover:scale-105"
+            >
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+              </svg>
+              List
+            </button>
+            
+            {/* Mobile Properties Button */}
+            <button 
+              onClick={() => setShowMobilePropertyList(true)}
+              className="lg:hidden fixed bottom-6 right-6 z-50 flex items-center bg-gray-900 text-white px-6 py-3 rounded-full font-medium shadow-lg hover:bg-gray-800 transition-all duration-200 hover:scale-105"
+            >
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14-7l-7 7-7-7m14 18l-7-7-7 7" />
+              </svg>
+              Properties
+            </button>
+          </>
+        )}
+
+        {/* Mobile Property List Overlay */}
+        {showMapView && showMobilePropertyList && (
+          <div className="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50" onClick={() => setShowMobilePropertyList(false)}>
+            <div 
+              className="absolute bottom-0 left-0 right-0 bg-white rounded-t-lg max-h-[70vh] overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Handle */}
+              <div className="flex justify-center py-3 border-b border-gray-200">
+                <div className="w-12 h-1 bg-gray-300 rounded-full"></div>
+              </div>
+              
+              {/* Header */}
+              <div className="p-4 border-b border-gray-200 flex items-center justify-between">
+                <h2 className="text-lg font-semibold text-gray-900">
+                  {properties.length} Properties
+                </h2>
+                <button 
+                  onClick={() => setShowMobilePropertyList(false)}
+                  className="text-gray-400 hover:text-gray-600"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              
+              {/* Scrollable Property List */}
+              <div className="overflow-y-auto p-4 space-y-4">
+                {properties.map((property) => {
+                  const currentIndex = currentImageIndex[property.id] || 0;
+                  return (
+                    <Link 
+                      key={property.id} 
+                      href={`/property/${property.id}`} 
+                      className="block"
+                      onClick={() => setShowMobilePropertyList(false)}
+                    >
+                      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                        <div className="flex">
+                          <div className="w-24 h-20 relative flex-shrink-0">
+                            <Image 
+                              src={property.images[currentIndex]} 
+                              alt={property.name} 
+                              fill
+                              className="object-cover rounded-l-lg" 
+                            />
+                          </div>
+                          <div className="flex-1 p-3">
+                            <h3 className="font-medium text-gray-900 text-sm mb-1 line-clamp-1">
+                              {property.name}
+                            </h3>
+                            <div className="flex items-center mb-1">
+                              <span className="text-yellow-400 mr-1 text-xs">★</span>
+                              <span className="font-medium text-gray-900 text-xs">{property.rating}</span>
+                              <span className="text-gray-600 text-xs ml-1">({property.reviewCount})</span>
+                            </div>
+                            <div className="flex items-center justify-between">
+                              <span className="text-xs text-gray-600">{property.category}</span>
+                              <span className="font-bold text-gray-900 text-sm">${property.price}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
         )}
       </div>
       <Footer />
