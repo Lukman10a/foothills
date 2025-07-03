@@ -95,7 +95,7 @@ const HeroSearch = () => {
     }
   };
 
-  // Clear error when user starts typing/selecting
+  // Clear error when user starts typing/selecting..
   const handleCityChange = (value: string) => {
     setSelectedCity(value);
     if (errors.city) {
