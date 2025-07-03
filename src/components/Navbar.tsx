@@ -109,7 +109,9 @@ export default function Navbar() {
         checkOut: checkOut,
         guests: guests.toString()
       });
-      window.location.href = `/search?${searchParams.toString()}`;
+      // Redirect to booking engine subdomain
+      window.location.href = `https://https://foothills-booking-engine.vercel.app//search?${searchParams.toString()}`;
+      // window.location.href = `http://localhost:3002/search?${searchParams.toString()}`;
     } catch (error) {
       console.error("Navbar search error:", error);
     } finally {

@@ -78,7 +78,7 @@ const HeroSearch = () => {
     try {
       console.log("Search:", { selectedCity, checkIn, checkOut, guests });
       
-      // Route to search page with parameters
+      // Route to booking engine with parameters
       const searchParams = new URLSearchParams({
         city: selectedCity,
         checkIn: checkIn,
@@ -86,7 +86,8 @@ const HeroSearch = () => {
         guests: guests.toString()
       });
       
-      window.location.href = `/search?${searchParams.toString()}`;
+      // Redirect to booking engine subdomain
+      window.location.href = `https://https://foothills-booking-engine.vercel.app/search?${searchParams.toString()}`;
     } catch (error) {
       console.error("Search error:", error);
     } finally {
